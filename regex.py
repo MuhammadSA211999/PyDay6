@@ -15,6 +15,7 @@ findall() => puru *string/sentence er modhye khuze. zekhane zekhane pattern matc
 
 sub()=> sub() method *3 ti argument recieve kore. *sub(pattern, replaceValue, text). text sentence/string e *pattern match korle *replaceValue diye sei match kora ongsho ke replace kore dey.
 '''
+# MATCH()
 # pattern='msa'
 # text='My name is msa. MSA is an entrepreneur'
 # if match(pattern,text):
@@ -25,13 +26,37 @@ sub()=> sub() method *3 ti argument recieve kore. *sub(pattern, replaceValue, te
 # don't matched // My name is msa. MSA is an entrepreneur
 # matched // MSA is an entrepreneur
 
+# SEARCH()
+# pattern='MSA'
+# text='My name is MSA. MSA is an entrepreneur'
+# matched=search(pattern,text)
+# if matched:
+#     whereStartMatch=matched.start() #11
+#     whereEndMatch=matched.end() #14
+#     startToEndMatched=matched.span() #(11,14)
+#     print(whereStartMatch,whereEndMatch,startToEndMatched)
+# else:
+#     print("// Don't matched")
+
+# FINDALL()
+# pattern='MSA'
+# text='My name is MSA. MSA is an entrepreneur'
+# matched=findall(pattern,text)
+# if matched:
+#     print(matched)
+# [MSA, MSA]
+
+
+# FINDALL in FUNCTIONAL WAY
+def isMatched(pattern,text):
+    matchedList=findall(pattern,text)
+    if len(matchedList)>0:
+        return matchedList
+    else:
+        return f"{pattern} don't matched on any word: '{text}'"
+
 pattern='MSA'
 text='My name is MSA. MSA is an entrepreneur'
-matched=search(pattern,text)
-if matched:
-    whereStartMatch=matched.start() #11
-    whereEndMatch=matched.end() #14
-    startToEndMatched=matched.span() #(11,14)
-    print(whereStartMatch,whereEndMatch,startToEndMatched)
-else:
-    print("// Don't matched")
+howManyMatched=isMatched(pattern,text)
+print(howManyMatched)
+
